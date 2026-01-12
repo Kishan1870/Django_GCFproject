@@ -1,0 +1,32 @@
+{% extends 'attendance/base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+
+    <div class="glass-card text-center animate-card">
+        <h2 class="mb-4">Smart Attendance System</h2>
+
+        <a href="{% url 'mark_attendance' %}" class="btn btn-primary w-100 mb-3">
+            Mark Attendance
+        </a>
+
+        <a href="{% url 'view_attendance' %}" class="btn btn-outline-primary w-100">
+            View Attendance
+        </a>
+
+        <a href="{% url 'dashboard' %}" class="btn btn-outline-primary w-100 mt-3">
+          Dashboard
+        </a>
+
+    </div>
+
+</div>
+{% endblock %}
+
+
+
+
+
+
+

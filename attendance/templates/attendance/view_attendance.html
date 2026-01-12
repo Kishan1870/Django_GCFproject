@@ -1,0 +1,40 @@
+{% extends 'attendance/base.html' %}
+{% block title %}Attendance Records{% endblock %}
+
+{% block content %}
+<div class="container mt-5 animate-card">
+
+    <div class="glass-card">
+        <h4 class="mb-4 text-center">Attendance Records</h4>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Subject</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in records %}
+                <tr>
+                    <td>{{ r.student.name }}</td>
+                    <td>{{ r.subject.name }}</td>
+                    <td>{{ r.date }}</td>
+                    <td>
+                        {% if r.status %}
+                        <span class="badge bg-success">Present</span>
+                        {% else %}
+                        <span class="badge bg-danger">Absent</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}
+

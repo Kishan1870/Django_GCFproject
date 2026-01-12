@@ -1,0 +1,166 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ================= ROOT COLORS ================= */
+:root {
+    --accent: #7c7cff;
+    --accent-glow: rgba(124, 124, 255, 0.6);
+}
+
+/* ================= BODY BACKGROUND ================= */
+body {
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(
+        120deg,
+        #0f2027,
+        #203a43,
+        #2c5364,
+        #6a11cb,
+        #2575fc
+    );
+    background-size: 400% 400%;
+    animation: bgFlow 14s ease infinite;
+    transition: background 0.5s ease;
+}
+
+/* ================= DARK MODE ================= */
+body.dark {
+    background: linear-gradient(
+        120deg,
+        #020617,
+        #020617,
+        #020617,
+        #1e293b
+    );
+}
+
+/* ================= BACKGROUND ANIMATION ================= */
+@keyframes bgFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ================= GLASS CARD ================= */
+.glass-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(18px);
+    border-radius: 22px;
+    padding: 45px;
+    width: 380px;
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.4),
+        inset 0 0 0.5px rgba(255,255,255,0.4);
+    animation: floatCard 6s ease-in-out infinite;
+}
+
+body.dark .glass-card {
+    background: rgba(15, 23, 42, 0.9);
+    color: #e5e7eb;
+}
+
+/* ================= FLOATING CARD ================= */
+@keyframes floatCard {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* ================= PAGE ENTRY ================= */
+.animate-card {
+    animation: pageEnter 1.2s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ================= HEADINGS ================= */
+h2, h4 {
+    font-weight: 700;
+    letter-spacing: 0.6px;
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+    border-radius: 14px;
+    font-weight: 600;
+    padding: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s ease;
+}
+
+/* PRIMARY BUTTON */
+.btn-primary {
+    background: var(--accent);
+    border: none;
+    box-shadow: 0 0 0 transparent;
+}
+
+.btn-primary:hover {
+    box-shadow:
+        0 0 25px var(--accent-glow),
+        0 0 50px rgba(124,124,255,0.3);
+    transform: translateY(-4px);
+}
+
+/* OUTLINE BUTTON */
+.btn-outline-primary {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.btn-outline-primary:hover {
+    background: var(--accent);
+    color: #fff;
+    box-shadow:
+        0 0 20px var(--accent-glow);
+    transform: translateY(-4px);
+}
+
+/* ================= TABLE ================= */
+.table {
+    color: inherit;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    backdrop-filter: blur(10px);
+}
+
+canvas {
+    animation: chartFade 1.5s ease;
+}
+
+@keyframes chartFade {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+
+
+

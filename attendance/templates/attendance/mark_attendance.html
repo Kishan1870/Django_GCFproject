@@ -1,0 +1,61 @@
+{% extends 'attendance/base.html' %}
+{% block title %}Mark Attendance{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+
+    <div class="glass-card animate-card">
+        <h4 class="mb-4 text-center">Mark Attendance</h4>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- Student -->
+            <div class="mb-3">
+                <label class="form-label">Student</label>
+                <select class="form-select" name="student" required>
+                    {% for s in students %}
+                    <option value="{{ s.id }}">{{ s.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Subject -->
+            <div class="mb-3">
+                <label class="form-label">Subject</label>
+                <select class="form-select" name="subject" required>
+                    {% for sub in subjects %}
+                    <option value="{{ sub.id }}">{{ sub.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- STATUS (FIXED) -->
+            <div class="mb-4">
+                <label class="form-label d-block">Attendance Status</label>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="status" value="present" required>
+                    <label class="form-check-label">Present</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="status" value="absent" required>
+                    <label class="form-check-label">Absent</label>
+                </div>
+            </div>
+
+            <button class="btn btn-primary w-100">
+                Save Attendance
+            </button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}
+
+
+
+
+
+

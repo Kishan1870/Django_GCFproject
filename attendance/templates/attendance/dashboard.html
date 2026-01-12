@@ -1,0 +1,63 @@
+{% extends 'attendance/base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5 animate-card">
+
+    <div class="glass-card mx-auto" style="width: 600px;">
+        <h4 class="text-center mb-4">Attendance Overview</h4>
+
+        <!-- Chart Canvas -->
+        <canvas id="attendanceChart" height="200"></canvas>
+    </div>
+
+</div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('attendanceChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Present', 'Absent'],
+            datasets: [{
+                label: 'Students',
+                data: [{{ present_count }}, {{ absent_count }}],
+                backgroundColor: [
+                    'rgba(124,124,255,0.8)',
+                    'rgba(239,68,68,0.8)'
+                ],
+                borderRadius: 10
+            }]
+        },
+        options: {
+            responsive: true,
+            animation: {
+                duration: 1800,
+                easing: 'easeOutQuart'
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#e5e7eb',
+                        font: { size: 14 }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { color: '#e5e7eb' },
+                    grid: { color: 'rgba(255,255,255,0.1)' }
+                },
+                x: {
+                    ticks: { color: '#e5e7eb' },
+                    grid: { display: false }
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}
